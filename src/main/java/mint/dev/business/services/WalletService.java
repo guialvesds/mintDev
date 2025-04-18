@@ -52,7 +52,6 @@ public class WalletService {
             walletDTO.setUserPrimaryName(walletEntity.getUser().getPrimaryName());
             walletDTO.setUserSecondName(walletEntity.getUser().getSecondName());
             walletDTO.setUserEmail(walletEntity.getUser().getEmail());
-
         }
 
         return walletDTO;
