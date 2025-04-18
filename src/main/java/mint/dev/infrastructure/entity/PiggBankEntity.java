@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @Builder
-public class PiggBank {
+public class PiggBankEntity {
 
     @Id
     private String id;
