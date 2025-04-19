@@ -1,7 +1,9 @@
 package mint.dev.business.services;
 
+import mint.dev.infrastructure.entity.PiggBankEntity;
 import mint.dev.infrastructure.enums.PerfilUserStatus;
 import mint.dev.infrastructure.entity.UserEntity;
+import mint.dev.infrastructure.repository.PiggBankRespository;
 import mint.dev.infrastructure.repository.UserRepository;
 import mint.dev.infrastructure.entity.WalletEntity;
 import mint.dev.business.exceptions.BusinessException;
@@ -22,12 +24,15 @@ public class UserService {
     private  PasswordEncoder passwordEncoder;
     @Autowired
     private WalletRepository walletRepository;
+    @Autowired
+    PiggBankRespository piggBankRespository;
 
     @Autowired
-  public UserService (UserRepository userRepository, PasswordEncoder passwordEncoder, WalletRepository walletRepository) {
+  public UserService (UserRepository userRepository, PasswordEncoder passwordEncoder, WalletRepository walletRepository, PiggBankRespository piggBankRespository) {
       this.userRepository = userRepository;
       this.passwordEncoder = passwordEncoder;
       this.walletRepository = walletRepository;
+      this.piggBankRespository = piggBankRespository;
   }
 
   public List<UserEntity> findAll(){
@@ -38,7 +43,7 @@ public class UserService {
       return this.userRepository.findById(userId).orElseThrow(() -> new BusinessException("User not found"));
   }
 
-  public mint.dev.infrastructure.entity.UserEntity findEmail(String email) {
+  public UserEntity findEmail(String email) {
         return userRepository.findByEmail(email).orElseThrow(() -> new BusinessException("User not found"));
     }
 
@@ -63,6 +68,10 @@ public class UserService {
               walletDefealt.setCreatedAt(LocalDateTime.now());
 
               walletRepository.save(walletDefealt);
+
+              PiggBankEntity piggBankDefealt = new PiggBankEntity();
+              piggBankDefealt.setName("Cofrinho");
+              piggBankDefealt.setUser(savedUser);
 
               return savedUser;
           } else {
