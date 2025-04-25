@@ -18,7 +18,7 @@ public class PiggBankEntity {
     @Id
     private String id;
     private Double balance = 00.00;
-    private String name;
+    private String name = "Cofrinho";
     private Double goal = 00.00;
     private Double goalPerc = 00.00;
     private LocalDateTime createdAt = LocalDateTime.now();

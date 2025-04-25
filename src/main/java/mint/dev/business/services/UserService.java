@@ -70,8 +70,9 @@ public class UserService {
               walletRepository.save(walletDefealt);
 
               PiggBankEntity piggBankDefealt = new PiggBankEntity();
-              piggBankDefealt.setName("Cofrinho");
               piggBankDefealt.setUser(savedUser);
+
+              piggBankRespository.save(piggBankDefealt);
 
               return savedUser;
           } else {
