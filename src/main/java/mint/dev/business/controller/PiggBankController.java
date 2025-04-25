@@ -16,6 +16,10 @@ public class PiggBankController {
 
     private PiggBankService piggBankService;
 
+    public PiggBankController(PiggBankService piggBankService) {
+        this.piggBankService = piggBankService;
+    }
+
     @GetMapping
     public ResponseEntity<List<PiggBankEntity>> findAll() {
         var piggbank = this.piggBankService.findAll();
