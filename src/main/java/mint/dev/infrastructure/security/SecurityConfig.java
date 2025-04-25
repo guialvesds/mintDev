@@ -25,6 +25,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/wallets/add/**").permitAll()
                         .requestMatchers("/api/v1/wallets/{id}").permitAll()
                         .requestMatchers("api/v1/auth/**").permitAll()
+                        .requestMatchers("api/v1/piggbank").permitAll()
                         .anyRequest().authenticated() // Requer autenticação para outros endpoints
                 );
         return http.build();
